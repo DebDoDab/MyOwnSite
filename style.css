@@ -1,19 +1,53 @@
-body {
-	margin: 0px;
+* {
+	margin: 0;
+	padding: 0;
+	background-image: url(img/playroombg.png);
 }
 
-div#coins {
-	position: absolute;
-	top: 85%;
-	left: 20%;
-	right: 60%;
-	background-color: rgba(255, 255, 0, 0.75);
+.game {
+	position: fixed;
+	height: 50vh;
+	width: 50vw;
 	text-align: center;
+	cursor: pointer;
+	transition: 500ms linear;
 }
-div#attempts {
-	position: absolute;
-	top: 85%;
-	left: 60%;
-	right: 20%;
-	background-color: rgba(255, 255, 0, 0.75);
-	text-align: center;
+
+#coincollect {
+	float: left;
+	right: 0;
+	top: 0;
+	background-image: url(img/coincollectbg.png);
+	background-size: cover;
+}
+
+#faceclick {
+	float: right;
+	left: 0;
+	top: 0;
+	background-image: url(img/faceclickbg.png);
+	background-size: cover;
+}
+
+#snakegame {
+	float: left;
+	right: 0;
+	bottom: 0;
+	background-image: url(img/snakegamebg.png);
+	background-size: cover;
+	background-color: rgba(0,255,0,1);
+}
+
+#pendulum {
+	float: right;
+	left: 0;
+	bottom: 0;
+	background-image: url(img/pendulumbg.png);
+	background-color: rgba(255,0,0,1);
+	background-size: cover;
+}
+
+.all:not(:hover) .game{
+	height: 50vh;
+	width: 50vw;
+}
