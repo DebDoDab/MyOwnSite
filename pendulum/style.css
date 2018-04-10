@@ -1,0 +1,11 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.pendulum {
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
