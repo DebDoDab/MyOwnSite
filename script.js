@@ -1,17 +1,17 @@
 function coincollectgame() {
-	location.href = "coincollect/index.html";
+	location.href = "coincollect";
 }
 
 function faceclickgame() {
-	location.href = "faceclick/index.html";
+	location.href = "faceclick";
 }
 
 function snakegamegame() {
-	location.href = "snakegame/index.html";
+	location.href = "snakegame";
 }
 
 function pendulumgame() {
-	location.href = "pendulum/index.html";
+	location.href = "pendulum";
 }
 
 function coincollectover() {
