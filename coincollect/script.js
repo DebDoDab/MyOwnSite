@@ -8,10 +8,7 @@ var
 var
 	relaxbynt = 0,				//use NT's head instead of a ball
 	prevkey = -1,				//previous pressed key
-	showdidntsavedyettext = 0,	//showing "Didn't saved yet" text on a screen
 	showrelaxbynttext = 0,		//showing 'Relax by NT' text on a screen
-	showloadedtext = 0,			//showing 'Loaded' text on a screen
-	showsavedtext = 0,			//showing 'Saved' text on a screen
 	stats = {					//stats
 		attempts: 0,			//attempts made
 		coins: 0				//coins collected
@@ -29,6 +26,11 @@ var	rectangle = {xs: 0, xf: canv.width, ys: canv.height*0.8, yf: canv.height*0.8
 var ball = {size: ballsize, x: ballsize, y: rectangle.ys /2, vx: speed*Math.sin(angle), vy: speed*Math.cos(angle)};
 var coin = {};
 newCoin();
+
+//downloading old stats
+if (localStorage.getItem("stats").includes("attempts")) {
+	stats = JSON.parse(localStorage.getItem("stats"));
+}
 
 //player clicked
 document.addEventListener('mousedown', function(e) {
@@ -71,32 +73,6 @@ setInterval(function() {
 	ctx.fillText("Coins collected: " + stats.coins, canv.width*0.3, canv.height*0.87);
 	ctx.fillText("Attempts made: " + stats.attempts, canv.width*0.7, canv.height*0.87);
 
-	//output hints in text
-	var hintstextsize = Math.floor(Math.min(canv.width*0.8, canv.height*1.5) * 0.03);
-	ctx.font = hintstextsize+"px Serif";
-	ctx.textAlign = "center";
-	ctx.fillStyle = "#ff0000";
-	ctx.fillText("To save your results press 'S' button", canv.width*0.25, canv.height*0.95);
-	ctx.fillText("To load your old results press 'L' button", canv.width*0.75, canv.height*0.95);
-
-	//showing 'Saved' text
-	if (showsavedtext > 0) {
-		ctx.font = "80px Serif";
-		ctx.textAlign = "center";
-		ctx.fillStyle = "#000000";
-		ctx.fillText("Saved.", canv.width*0.5, canv.height*0.5);
-		showsavedtext -= t;
-	}
-
-	//showing 'Loaded' text
-	if (showloadedtext > 0) {
-		ctx.font = "80px Serif";
-		ctx.textAlign = "center";
-		ctx.fillStyle = "#000000";
-		ctx.fillText("Loaded.", canv.width*0.5, canv.height*0.5);
-		showloadedtext -= t;
-	}
-
 	//showing 'Relax by NT' text
 	if (showrelaxbynttext > 0) {
 		ctx.font = "80px Serif";
@@ -106,14 +82,8 @@ setInterval(function() {
 		showrelaxbynttext -= t;
 	}
 
-	//showing 'Didnt saved' text
-	if (showdidntsavedyettext > 0) {
-		ctx.font = "80px Serif";
-		ctx.textAlign = "center";
-		ctx.fillStyle = "#000000";
-		ctx.fillText("You didn't save", canv.width*0.5, canv.height*0.5);
-		showdidntsavedyettext -= t;
-	}
+	//calculating ball size
+	ball.size = Math.min(canv.width, canv.height) * 0.05;
 
 	//creating ball
 	if (!relaxbynt) {
@@ -172,6 +142,8 @@ function gameover() {
 	clicked = 0;
 	ball = {size: ballsize, x: ballsize, y: rectangle.ys /2, vx: speed*Math.sin(angle), vy: -speed*Math.cos(angle)};
 	newCoin();
+	//saving stats
+	localStorage.setItem("stats", JSON.stringify(stats));
 }
 
 //random number
@@ -208,32 +180,10 @@ function getGradient() {
 document.addEventListener('keydown', function(e) {
 
 	console.log(e.keyCode);
-	if (e.keyCode == 83) {
-		//saving stats
-		localStorage.setItem("stats", JSON.stringify(stats));
-		showsavedtext = 1000;
-		showloadedtext = 0;
-		showrelaxbynttext = 0;
-		showdidntsavedyettext = 0;
-	} else if (e.keyCode == 76) {
-		//load stats
-		if (localStorage.getItem("stats").includes('attempts')) {
-			stats  = JSON.parse(localStorage.getItem("stats"));
-			showloadedtext = 1000;
-			showdidntsavedyettext = 0;
-		} else {
-			showdidntsavedyettext = 1000;
-			showloadedtext = 0;
-		}
-		showsavedtext = 0;
-		showrelaxbynttext = 0;
-	} else if (e.keyCode == 84 && prevkey == 78) {
+	if (e.keyCode == 84 && prevkey == 78) {
 		//changing ball to NT's head
 		relaxbynt = 1;
 		showrelaxbynttext = 1000;
-		showloadedtext = 0;
-		showsavedtext = 0;
-		showdidntsavedyettext = 0;
 	}
 
 	//saving key
