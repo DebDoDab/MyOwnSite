@@ -28,7 +28,7 @@ var coin = {};
 newCoin();
 
 //downloading old stats
-if (localStorage.getItem("stats").includes("attempts")) {
+if (localStorage.getItem("stats") != null) {
 	stats = JSON.parse(localStorage.getItem("stats"));
 }
 
