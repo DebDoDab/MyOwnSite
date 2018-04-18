@@ -33,20 +33,7 @@ if (localStorage.getItem("stats") != null) {
 }
 
 //player clicked
-document.addEventListener('mousedown', function(e) {
-	var x = e.clientX;
-	var y = e.clientY;
-
-	//starting game
-	if (!clicked) {
-		clicked = 1;
-		ball.speed = getDistance(x, y, ball.x, ball.y) / 500;
-		ball.angle = Math.atan((y - ball.y)/(x - ball.x));
-		ball.vx = ball.speed*Math.cos(ball.angle);
-		ball.vy = ball.speed*Math.sin(ball.angle);
-		stats.attempts++;
-	}
-});
+document.addEventListener('mousedown', clickclick);
 
 //drawing objects
 setInterval(function() {
@@ -65,13 +52,12 @@ setInterval(function() {
 	ctx.fillRect(rectangle.xs, rectangle.ys, rectangle.xf, rectangle.yf);
 
 	//output count of collected coins and attempts in text
-	var countstextsize = Math.floor(Math.min(canv.width*0.9, canv.height*1.25) * 0.05);
-	ctx.font = countstextsize+"px Impact";
-	console.log(ctx.font);
-	ctx.textAlign = "center";
-	ctx.fillStyle = "#0000ff";
-	ctx.fillText("Coins collected: " + stats.coins, canv.width*0.3, canv.height*0.87);
-	ctx.fillText("Attempts made: " + stats.attempts, canv.width*0.7, canv.height*0.87);
+	document.getElementById('coins').textContent = "Coins collected: " + stats.coins;
+	document.getElementById('attempts').textContent = "Attempts made: " + stats.attempts;
+
+	//configure text size
+	document.getElementById('coins').style.font = (Math.min(canv.width, canv.height) * 0.05).toString() + "pt";
+	document.getElementById('attempts').style.font = "50pt";
 
 	//showing 'Relax by NT' text
 	if (showrelaxbynttext > 0) {
@@ -190,3 +176,19 @@ document.addEventListener('keydown', function(e) {
 	prevkey = e.keyCode;
 
 });
+
+//onclick function
+function clickclick(e) {
+	var x = e.clientX;
+	var y = e.clientY;
+
+	//starting game
+	if (!clicked) {
+		clicked = 1;
+		ball.speed = getDistance(x, y, ball.x, ball.y) / 500;
+		ball.angle = Math.atan((y - ball.y)/(x - ball.x));
+		ball.vx = ball.speed*Math.cos(ball.angle);
+		ball.vy = ball.speed*Math.sin(ball.angle);
+		stats.attempts++;
+	}
+}

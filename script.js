@@ -15,56 +15,48 @@ function pendulumgame() {
 }
 
 function coincollectover() {
-	document.getElementById('faceclick').style.height="75vh";
-	document.getElementById('faceclick').style.width="25vw";
-	document.getElementById('coincollect').style.height="75vh";
-	document.getElementById('coincollect').style.width="75vw";
-	document.getElementById('snakegame').style.height="25vh";
-	document.getElementById('snakegame').style.width="75vw";
-	document.getElementById('pendulum').style.height="25vh";
-	document.getElementById('pendulum').style.width="25vw";
+	editallsize({h: 70, w: 30},
+				{h: 70, w: 70},
+				{h: 30, w: 70},
+				{h: 30, w: 30});
 }
 
 function faceclickover() {
-	document.getElementById('faceclick').style.height="75vh";
-	document.getElementById('faceclick').style.width="75vw";
-	document.getElementById('coincollect').style.height="75vh";
-	document.getElementById('coincollect').style.width="25vw";
-	document.getElementById('snakegame').style.height="25vh";
-	document.getElementById('snakegame').style.width="25vw";
-	document.getElementById('pendulum').style.height="25vh";
-	document.getElementById('pendulum').style.width="75vw";
+	editallsize({h: 70, w: 70},
+				{h: 70, w: 30},
+				{h: 30, w: 30},
+				{h: 30, w: 70});
 }
 
 function snakegameover() {
-	document.getElementById('faceclick').style.height="25vh";
-	document.getElementById('faceclick').style.width="25vw";
-	document.getElementById('coincollect').style.height="25vh";
-	document.getElementById('coincollect').style.width="75vw";
-	document.getElementById('snakegame').style.height="75vh";
-	document.getElementById('snakegame').style.width="75vw";
-	document.getElementById('pendulum').style.height="75vh";
-	document.getElementById('pendulum').style.width="25vw";
+	editallsize({h: 30, w: 30},
+				{h: 30, w: 70},
+				{h: 70, w: 70},
+				{h: 70, w: 30});
 }
 
 function pendulumover() {
-	document.getElementById('faceclick').style.height="25vh";
-	document.getElementById('faceclick').style.width="75vw";
-	document.getElementById('coincollect').style.height="25vh";
-	document.getElementById('coincollect').style.width="25vw";
-	document.getElementById('snakegame').style.height="75vh";
-	document.getElementById('snakegame').style.width="25vw";
-	document.getElementById('pendulum').style.height="75vh";
-	document.getElementById('pendulum').style.width="75vw";
+	editallsize({h: 30, w: 70},
+				{h: 30, w: 30},
+				{h: 70, w: 30},
+				{h: 70, w: 70});
 }
 
 function mouseout() {
-	document.getElementById('faceclick').style.height="50vh";
-	document.getElementById('faceclick').style.width="50vw";
-	document.getElementById('coincollect').style.height="50vh";
-	document.getElementById('coincollect').style.width="50vw";
-	document.getElementById('snakegame').style.height="50vh";
-	document.getElementById('snakegame').style.width="50vw";
-	document.getElementById('pendulum').style.height="50vh";
-	document.getElementById('pendulum').style.width="50vw";
+	editallsize({h: 50, w: 50},
+				{h: 50, w: 50},
+				{h: 50, w: 50},
+				{h: 50, w: 50});
+}
+
+function editallsize(f, s, p, c) {
+	editsize('faceclick', f.h, f.w);
+	editsize('coincollect', s.h, s.w);
+	editsize('snakegame', p.h, p.w);
+	editsize('pendulum', c.h, c.w);
+}
+
+function editsize(id, height, width) {
+	document.getElementById(id).style.height=height+"vh";
+	document.getElementById(id).style.width =width +"vw";
 }
