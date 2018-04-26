@@ -1,0 +1,11 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.fluctuations {
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
