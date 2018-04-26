@@ -100,7 +100,8 @@ setInterval(function() {
 	//creating player
 	ctx.beginPath();
 	ctx.fillStyle = "#f00";
-	ctx.arc(player.x, player.y, player.size, 0, Math.PI*2);
+	//ctx.arc(player.x, player.y, player.size, 0, Math.PI*2);
+	ctx.fillRect(player.x-player.size, player.y-player.size, player.size*2, player.size*2);
 	ctx.fill();
 
 	//writing score
@@ -115,7 +116,7 @@ setInterval(function() {
 	if (!gameover) {
 		document.getElementById("highscore").textContent = "High Score = " + highscore;
 	}
-	
+
 }, t);
 
 //random number
