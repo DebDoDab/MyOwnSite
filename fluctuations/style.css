@@ -12,4 +12,14 @@
 
 .add {
 	position: absolute;
+	left: 30vw;
+	right: 60vw;
+	top: 10vh;
+}
+
+.del {
+	position: absolute;
+	left: 60vw;
+	right: 30vw;
+	top: 10vh;
 }
