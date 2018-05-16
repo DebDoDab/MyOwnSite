@@ -11,7 +11,7 @@ function snakegamegame() {
 }
 
 function pendulumgame() {
-	location.href = "pendulum";
+	location.href = "fluctuations";
 }
 
 function coincollectover() {
