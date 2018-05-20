@@ -132,7 +132,7 @@ function AddPendulum() {
 	var loka = getRandomArbitrary(0.5, 1.5);
 	var col = getNextColor();
 	object.push(
-	{x: 0, y: 0, r: r*loka, w: w*kola, A: a*kola, start: start, color: col});
+	{x: 0, y: 0, r: r*kola, w: w*loka, A: a*kola, start: start, color: col});
 }
 
 function DeletePendulum() {
