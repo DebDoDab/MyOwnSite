@@ -10,16 +10,14 @@
 	text-align: center;
 }
 
-.add {
+.penduluma {
 	position: absolute;
 	left: 30vw;
-	right: 60vw;
-	top: 10vh;
+	top: 40vh;
 }
 
-.del {
+.pendulumw {
 	position: absolute;
-	left: 60vw;
-	right: 30vw;
-	top: 10vh;
+	left: 30vw;
+	top: 60vh;
 }
