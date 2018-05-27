@@ -24,7 +24,8 @@ var
 		f : 0,
 		x : 0,
 		y : 0,
-		angle : 0
+		angle : 0,
+		v : 0
 	},
 
 	camera = {
@@ -55,6 +56,7 @@ setInterval(function () {
 	//object.w = object.g //fix plz
 	object.w = document.getElementById("pendulumw").value/100;
 	object.a = document.getElementById("penduluma").value;
+	object.v = (object.w*t + object.angle)*object.l/t;
 	object.x = object.a * Math.sin(object.w*t + object.angle);
 	object.angle += object.w*t;
 	object.y = Math.sqrt(object.l*object.l - object.x*object.x);
